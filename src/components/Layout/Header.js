@@ -8,7 +8,7 @@ const Header = props => {
     <div>
       <header className={classes.header}>
         <h1>MealsApp</h1>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.onShowCart} />
       </header>
       <div className={classes['main-image']}>
         <img src={background} alt="A table full of food" />
@@ -18,3 +18,4 @@ const Header = props => {
 }
 
 export default Header
+
