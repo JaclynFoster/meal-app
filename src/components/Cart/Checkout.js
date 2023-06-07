@@ -18,16 +18,16 @@ const Checkout = props => {
   const cityInputRef = useRef()
 
   const confirmHandler = e => {
-      e.preventDefault()
-      const enteredName = nameInputRef.current.value
-      const enteredStreet = streetInputRef.current.value
-      const enteredPostalCode = postalCodeInputRef.current.value
-      const enteredCity = cityInputRef.current.value
-      const enteredNameIsValid = !isEmpty(enteredName)
-      const enteredStreetIsValid = !isEmpty(enteredStreet)
-      const enteredCityIsValid = !isEmpty(enteredCity)
-      const enteredPostalCodeIsValid = isFiveChars(enteredPostalCode)
-      setFormInputValid({
+    e.preventDefault()
+    const enteredName = nameInputRef.current.value
+    const enteredStreet = streetInputRef.current.value
+    const enteredPostalCode = postalCodeInputRef.current.value
+    const enteredCity = cityInputRef.current.value
+    const enteredNameIsValid = !isEmpty(enteredName)
+    const enteredStreetIsValid = !isEmpty(enteredStreet)
+    const enteredCityIsValid = !isEmpty(enteredCity)
+    const enteredPostalCodeIsValid = isFiveChars(enteredPostalCode)
+    setFormInputValid({
       name: enteredNameIsValid,
       street: enteredStreetIsValid,
       city: enteredCityIsValid,
@@ -41,9 +41,14 @@ const Checkout = props => {
       enteredPostalCodeIsValid
 
     if (!formIsValid) {
-
+      return
     }
-    // Submit cart data here
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode
+    })
   }
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
@@ -94,4 +99,5 @@ const Checkout = props => {
 }
 
 export default Checkout
+
 
